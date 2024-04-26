@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import './App.css'
 
 function App() {
-  const [pokemonSprite, setPokemonSprite] = useState('');
+  const [pokemonData, setPokemonData] = useState(null);
   const [pokemonName, setPokemonName] = useState('');
 
   async function fetchData() {
@@ -15,7 +15,14 @@ function App() {
 
       const data = await response.json();
       const sprite = data.sprites.front_default;
-      setPokemonSprite(sprite);
+      const pokemonInfo = {
+        name: data.name,
+        sprite: sprite,
+        height: data.height,
+        weight: data.weight,
+        types: data.types.map(type => type.type.name)
+      };
+      setPokemonData(pokemonInfo);
     } catch (error) {
       console.log(error);
     }
@@ -35,7 +42,15 @@ function App() {
         placeholder="Enter Pokemon Name"
       />
       <button onClick={fetchData}>Fetch Pokemon</button><br />
-      {pokemonSprite && <img src={pokemonSprite} alt="Pokemon Sprite" style={{ display: 'block' }} />}
+      {pokemonData && (
+        <div>
+          <img src={pokemonData.sprite} alt="Pokemon Sprite" style={{ display: 'block' }} />
+          <h2>{pokemonData.name}</h2>
+          <p>Height: {pokemonData.height}</p>
+          <p>Weight: {pokemonData.weight}</p>
+          <p>Types: {pokemonData.types.join(', ')}</p>
+        </div>
+      )}
     </div>
   );
 }

@@ -43,7 +43,7 @@ function App() {
         onChange={(e) => setPokemonName(e.target.value)}
         placeholder="Enter Pokemon Name"
       />
-      <button onClick={fetchData}>Fetch Pokemon</button><br />
+      <button onClick={fetchData}>Get Pokemon</button><br />
       {pokemonData && (
         <div>
           <img src={pokemonData.sprite} alt="Pokemon Sprite" style={{ display: 'block' }} />

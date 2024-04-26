@@ -34,6 +34,8 @@ function App() {
 
   return (
     <div>
+    <h1>Pokemon Library</h1>
+
       <input
         type="text"
         id="pokemonName"

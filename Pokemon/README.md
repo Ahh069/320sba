@@ -9,3 +9,7 @@ pikachu
 squirtle
 charizard
 charmeleon
+typhlosion
+mewtwo
+
+There are over 1000 Pokemon charactors so have fun serching and learning.
